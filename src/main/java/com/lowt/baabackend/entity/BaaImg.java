@@ -32,9 +32,7 @@ public class BaaImg implements Serializable {
     private Long id;
 
     private String imgPath;
-
-    private Integer predictId;
-
+    
     private Long pId;
 
     /**

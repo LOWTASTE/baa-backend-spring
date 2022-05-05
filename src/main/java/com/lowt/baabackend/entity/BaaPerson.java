@@ -90,7 +90,7 @@ public class BaaPerson implements Serializable {
     /**
      * 逻辑删除字段（1:未删除,0:删除）
      */
-    @TableLogic
+    @TableLogic(value = "1", delval = "0")
     @TableField(fill = FieldFill.INSERT)
     private Integer isShow;
 

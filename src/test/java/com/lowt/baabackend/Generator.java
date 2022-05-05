@@ -15,9 +15,9 @@ public class Generator {
         //数据源
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL);
-        dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/baa?useUnicode=true&characterEncoding=UTF-8");
+        dataSourceConfig.setUrl("jdbc:mysql://1.15.53.152:3306/baa-backend?useUnicode=true&characterEncoding=UTF-8");
         dataSourceConfig.setUsername("root");
-        dataSourceConfig.setPassword("Llt619tlL");
+        dataSourceConfig.setPassword("Llt619tlL.mysql");
         dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
         autoGenerator.setDataSource(dataSourceConfig);
         //全局配置
@@ -30,7 +30,7 @@ public class Generator {
         //包信息
         PackageConfig packageConfig = new PackageConfig();
         packageConfig.setParent("com.lowt");
-        packageConfig.setModuleName("baabackend-net");
+        packageConfig.setModuleName("baabackend-demo");
         packageConfig.setController("controller");
         packageConfig.setService("service");
         packageConfig.setServiceImpl("service.impl");
