@@ -6,6 +6,7 @@ import com.lowt.baabackend.service.BaaPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class BaaPersonController {
         }
     }
 
+    @Transactional
     @PutMapping("add")
     public ResponseEntity<BaaPerson> addBaaPerson(@RequestBody BaaPerson baaPerson) {
         try {
@@ -54,6 +56,7 @@ public class BaaPersonController {
         }
     }
 
+    @Transactional
     @PostMapping("update")
     public ResponseEntity<BaaPerson> updateBaaPerson(@RequestBody BaaPerson baaPerson) {
         try {

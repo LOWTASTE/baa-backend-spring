@@ -1,8 +1,10 @@
 package com.lowt.baabackend;
 
+import com.lowt.baabackend.entity.BaaUsers;
 import com.lowt.baabackend.mapper.backend.BaaUsersMapper;
 import com.lowt.baabackend.service.BaaBaamodelService;
 import com.lowt.baabackend.service.BaaImgService;
+import com.lowt.baabackend.service.Impl.BaaPersonServiceImpl;
 import com.lowt.baabackend.service.Impl.BaaUsersServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,13 @@ class BAABackendApplicationTests {
 
     @Autowired
     private BaaUsersMapper baaUsersMapper;
+
+//    @Autowired
+//    private ESBaaPersonRepository esBaaPersonRepository;
+
+    @Autowired
+    private BaaPersonServiceImpl baaPersonService;
+
 
     @Test
     void test() {
@@ -58,6 +67,19 @@ class BAABackendApplicationTests {
 //            System.out.println("fail");
 //        }
 
-        baaUsersService.loadUserByUsername("LOWT");
+
+// es 存入
+//        esBaaPersonRepository.save(new ESBaaPerson().setName("OKOK"));
+
+// 测试 insert_time 和 modification_time
+//        BaaPerson baaPerson = new BaaPerson();
+//        baaPerson.setName("WHAT");
+//        baaPersonService.save(baaPerson);
+
+        BaaUsers users = new BaaUsers();
+        users.setPassword("OK-OK");
+        users.setUsername("OK-OK");
+        baaUsersService.save(users);
+
     }
 }

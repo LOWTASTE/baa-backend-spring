@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.PrintWriter;
@@ -26,15 +27,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() {
         //使用明文密码：为了简单方便测试
-        return NoOpPasswordEncoder.getInstance();
+//        return NoOpPasswordEncoder.getInstance();
         //暗文密码：会用salt加密
-//        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //设置注入的自定义认证实现类userService，必须实现了UserDetailsService接口
         auth.userDetailsService(baaUsersService);
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+//        super.configure(web);
+        web.ignoring().antMatchers("/swagger-ui.html",
+                "/swagger-ui/*",
+                "/swagger-resources/**",
+                "/v2/api-docs",
+                "/v3/api-docs",
+                "/webjars/**");
     }
 
     @Override
@@ -46,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                  在拦截规则的配置类 AbstractRequestMatcherRegistry 中*/
                 .antMatchers("/admin/**").hasRole("admin")//以/admin作为前缀的请求必须具有admin权限才能访问（当前也必须认证通过）
                 .antMatchers("/user/**").hasRole("user")//以/user作为前缀的请求必须具有user权限才能访问（当前也必须认证通过）
+                .antMatchers("/baabackend/baaUsers/register/**").permitAll()
                 .anyRequest().authenticated()//任何请求都认证过放行
                 .and()//方法表示结束当前标签，上下文回到HttpSecurity，开启新一轮的配置。
                 .formLogin()//使用表单认证
