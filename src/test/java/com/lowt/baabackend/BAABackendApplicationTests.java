@@ -1,10 +1,9 @@
 package com.lowt.baabackend;
 
-import com.lowt.baabackend.entity.BaaUsers;
 import com.lowt.baabackend.mapper.backend.BaaUsersMapper;
 import com.lowt.baabackend.service.BaaBaamodelService;
 import com.lowt.baabackend.service.BaaImgService;
-import com.lowt.baabackend.service.Impl.BaaPersonServiceImpl;
+import com.lowt.baabackend.service.BaaPersonService;
 import com.lowt.baabackend.service.Impl.BaaUsersServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.io.IOException;
+import java.util.Date;
 
 @SpringBootTest
 class BAABackendApplicationTests {
@@ -34,11 +35,11 @@ class BAABackendApplicationTests {
 //    private ESBaaPersonRepository esBaaPersonRepository;
 
     @Autowired
-    private BaaPersonServiceImpl baaPersonService;
+    private BaaPersonService baaPersonService;
 
 
     @Test
-    void test() {
+    void test() throws IOException {
 //        final BaaImg baaImg = new BaaImg();
 //        baaImg.setId(1L);
 //        baaImg.setImgPath("Q:/Proj_Python/DataSet/Bone+Age+Training+Set/boneage-training-dataset/1385.png");
@@ -76,10 +77,20 @@ class BAABackendApplicationTests {
 //        baaPerson.setName("WHAT");
 //        baaPersonService.save(baaPerson);
 
-        BaaUsers users = new BaaUsers();
-        users.setPassword("OK-OK");
-        users.setUsername("OK-OK");
-        baaUsersService.save(users);
+//        BaaUsers users = new BaaUsers();
+//        users.setPassword("OK-OK");
+//        users.setUsername("OK-OK");
+//        baaUsersService.save(users);
 
+
+        // excel导出
+//        ExcelBaaPersonInfo excelBaaPersonInfo = new ExcelBaaPersonInfo();
+//        excelBaaPersonInfo.createExcelLocal();
+
+
+//        final List<BaaPerson> baaPersonList = baaPersonService.list();
+//        System.out.println(baaPersonList);
+
+        System.out.println(new Date().getTime());
     }
 }

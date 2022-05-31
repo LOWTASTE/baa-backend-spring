@@ -1,8 +1,6 @@
 package com.lowt.baabackend.service.Impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lowt.baabackend.dto.FromPredictAPIDTO;
-import com.lowt.baabackend.dto.ToPredictAPIDTO;
 import com.lowt.baabackend.entity.BaaBaamodel;
 import com.lowt.baabackend.entity.BaaImg;
 import com.lowt.baabackend.entity.BaaPredictAge;
@@ -10,6 +8,8 @@ import com.lowt.baabackend.mapper.backend.BaaImgMapper;
 import com.lowt.baabackend.service.BaaBaamodelService;
 import com.lowt.baabackend.service.BaaImgService;
 import com.lowt.baabackend.service.BaaPredictAgeService;
+import com.lowt.baabackend.utils.FromPredictAPIDTO;
+import com.lowt.baabackend.utils.ToPredictAPIDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

@@ -2,13 +2,13 @@ package com.lowt.baabackend.controller;
 
 
 import com.lowt.baabackend.entity.BaaPerson;
-import com.lowt.baabackend.service.BaaPersonService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.lowt.baabackend.service.Impl.BaaPersonServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,13 +24,13 @@ import java.util.List;
 @RequestMapping("/baabackend/baaPerson")
 public class BaaPersonController {
 
-    @Autowired
-    BaaPersonService baaPersonService;
+    @Resource
+    BaaPersonServiceImpl baaPersonService;
 
     @GetMapping("{id}")
     public ResponseEntity<BaaPerson> baaPersonInfos(@PathVariable Long id) {
         try {
-            return ResponseEntity.ok(baaPersonService.getById(id));
+            return ResponseEntity.ok(baaPersonService.getByBaaPersonId(id));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
@@ -44,6 +44,7 @@ public class BaaPersonController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 
     @Transactional
     @PutMapping("add")
@@ -78,7 +79,5 @@ public class BaaPersonController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
 }
 

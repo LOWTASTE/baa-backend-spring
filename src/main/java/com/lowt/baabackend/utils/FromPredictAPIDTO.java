@@ -1,4 +1,4 @@
-package com.lowt.baabackend.dto;
+package com.lowt.baabackend.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ToPredictAPIDTO implements Serializable {
+public class FromPredictAPIDTO implements Serializable {
 
-    private String pic_url;
-    
-    private Long model_id;
+    private Long predict_age;
 }

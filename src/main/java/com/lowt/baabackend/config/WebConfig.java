@@ -11,10 +11,16 @@ public class WebConfig implements WebMvcConfigurer {
     @Value("${img.upload-path}")
     private String webUploadPath;
 
+    @Value("${headImg.upload-path}")
+    private String headImgUploadPath;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         registry.addResourceHandler("/baabackend/img/**")
                 .addResourceLocations("file:" + webUploadPath);
+        registry.addResourceHandler("/baabackend/headimg/**")
+                .addResourceLocations("file:" + headImgUploadPath);
+
     }
 }

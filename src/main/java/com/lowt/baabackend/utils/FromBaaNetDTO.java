@@ -1,4 +1,4 @@
-package com.lowt.baabackend.dto;
+package com.lowt.baabackend.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

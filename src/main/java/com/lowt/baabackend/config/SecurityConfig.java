@@ -64,7 +64,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()//使用表单认证
                 .loginProcessingUrl("/doLogin")//指定登录页面提交数据的接口
                 .successHandler((req, resp, authentication) -> {
-                    Object principal = authentication.getPrincipal();//获取认证成功的用户对象
+                    Object principal = authentication.getPrincipal(); //获取认证成功的用户对象
+//                    System.out.println(principal);
                     resp.setContentType("application/json;charset=utf-8");
                     PrintWriter out = resp.getWriter();
                     //使用Jackson将对象转换为JSON字符串
